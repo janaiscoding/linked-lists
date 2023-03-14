@@ -1,1 +1,1 @@
-# linked-lists
+Linked list created with Vanilla JS. 
