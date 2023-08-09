@@ -1,3 +1,9 @@
+class Node {
+  constructor(value = null) {
+    this.value = value;
+    this.next = null;
+  }
+}
 class LinkedList {
   constructor() {
     this.head = new Node();
@@ -95,28 +101,43 @@ class LinkedList {
     string += current.value; // tail
     return `${string} -> null`;
   }
-}
+  insertAt(index, value) {
+    let newNode = new Node(value);
+    let counter = 0;
+    let current = this.head;
 
-class Node {
-  constructor(value = null) {
-    this.value = value;
-    this.next = null;
+    while (counter + 1 !== index) {
+      if (current.next === null) {
+        // console.log("Cannot insert at this position")
+        this.append(value);
+        return;
+      }
+      current = current.next;
+      counter++;
+    }
+    if (counter + 1 === index) {
+      console.log(current.next);
+      newNode.next = current.next;
+      current.next = newNode;
+    }
   }
 }
+
 const newList = new LinkedList();
 newList.append("start");
 newList.append(3);
 newList.append("meow");
-console.log(newList.toString()); //start -> 3 -> meow -> null
-console.log(newList.size()); // 3
-console.log(newList.getHead()); // start
-console.log(newList.getTail()); // meow
-console.log(newList.at(1)); // 3
-newList.prepend("hey");
-console.log(newList.contains(3)); // true
-console.log(newList.contains("purple")); //false
-console.log(newList.find("meow")); // Found at index: 3
-console.log(newList.toString()); // hey -> start -> 3 -> meow -> null
-newList.pop();
-newList.pop();
+// console.log(newList.toString()); //start -> 3 -> meow -> null
+// console.log(newList.size()); // 3
+// console.log(newList.getHead()); // start
+// console.log(newList.getTail()); // meow
+// console.log(newList.at(1)); // 3
+// newList.prepend("hey");
+// console.log(newList.contains(3)); // true
+// console.log(newList.contains("purple")); //false
+// console.log(newList.find("meow")); // Found at index: 3
+// console.log(newList.toString()); // hey -> start -> 3 -> meow -> null
+// newList.pop();
+// newList.pop();
+newList.insertAt(6, "hey");
 console.log(newList.toString()); // hey -> start -> null
