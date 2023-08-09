@@ -13,3 +13,4 @@
 9. `find(value)` returns the index of the value or not found
 10. `toString()` returns readable list
 11. `insertAt(index, value)` places a new node at the given index, if index > length, simply appends, if index is zero, it prepends
+12. `removeAt(value)` removes any node if it exists at a valid index

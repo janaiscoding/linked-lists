@@ -121,6 +121,21 @@ class LinkedList {
       current.next = newNode;
     }
   }
+  removeAt(index) {
+    let counter = 0;
+    let current = this.head;
+    if (index === 0) {
+      this.head = this.head.next;
+    }
+    while (counter + 1 < index) {
+      if (current.next === null) return;
+      counter++;
+      current = current.next;
+    }
+    if (index === counter + 1) {
+      current.next = current.next.next;
+    }
+  }
 }
 
 const newList = new LinkedList();
@@ -139,5 +154,8 @@ newList.append("meow");
 // console.log(newList.toString()); // hey -> start -> 3 -> meow -> null
 // newList.pop();
 // newList.pop();
-newList.insertAt(6, "hey");
-console.log(newList.toString()); // hey -> start -> null
+// newList.insertAt(6, "hey");
+newList.append("new");
+newList.append("list");
+newList.removeAt(9);
+console.log(newList.toString());
